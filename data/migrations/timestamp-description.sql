@@ -1,0 +1,14 @@
+1567176753462
+-- CREATE DATABASE lab14; selfexplanitory
+--psql -f data/schema.sql -d lab 14; populate database with schema.sql data
+--SELECT COUNT(*) FROM BOOKS; verifies the content of schema.sql
+--CREATE DATABASE lab14_normal WITH TEMPLATE lab14; builds lab14_normal in the lab14 template
+--DATABASE MIGRATION
+--CREATE TABLE BOOKSHELVES(id SERIAL PRIMARY KEY, name VARCHAT(255)); creates a new table with new PK 
+--INSERT INTO bookshelves(name) SELECT DISTINCT bookshelf FROM books; inserts data from bookshelf in books db into bookshelves
+--SELECT COUNT (*)FROM bookshelves; shows data in bookshelves confirming migration
+--ALTER TABLE book ADD COLUMN bookshelf_id INT; adds column for bookshel_id into bookshelves
+--UPDATE books SET bookshelf_id=shelf.id FROM (SELECT * FROM bookshelves) AS shelf WHERE books.bookshelf = shelf.name; connects two tables to match books
+--SELECT bookshelf_id FROM books; to confirm
+--ALTER TABLE books DROP COLUMN bookshelf; drops bookshelf column by altering the table
+--ALTER TABLE books ADD CONSTRAINT fk_bookshelves FOREIGN KEY (bookshelf_id) REFERENCES bookshelves(id); sets bookshelf_id as a fk
